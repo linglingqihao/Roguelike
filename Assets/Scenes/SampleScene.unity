@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510255583}
   - component: {fileID: 510255582}
+  - component: {fileID: 510255584}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -137,13 +138,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 510255581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee8c8e457d6d490cb3c41a695229c78, type: 3}
+  m_Script: {fileID: 11500000, guid: 588a7551975654badb240a6f23e8c33e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outWallay:
+  outWallArray:
   - {fileID: 1877427788687482, guid: 897bca52d4949462089ee7650944aab0, type: 2}
-  - {fileID: 1082017163244982, guid: 6c8b4df41ef8b4417859d292f42f134a, type: 2}
   - {fileID: 1485323319527026, guid: 3bf75140894b543e0abf807458d3b755, type: 2}
+  - {fileID: 1082017163244982, guid: 6c8b4df41ef8b4417859d292f42f134a, type: 2}
   floorArray:
   - {fileID: 1818768998679334, guid: 3db9573d774634b6ead45b17c5a0db5a, type: 2}
   - {fileID: 1469974811123918, guid: 7fd9b0b0090d644aebf6fae90ef6cfe1, type: 2}
@@ -153,8 +154,26 @@ MonoBehaviour:
   - {fileID: 1561694714797562, guid: 23a7a171351f64b4096192a57e91b456, type: 2}
   - {fileID: 1163969556971836, guid: 6414f8369f49b4f3281371277848ed18, type: 2}
   - {fileID: 1945252055848926, guid: 292552b84114b4d2ab061723cdd1a1e9, type: 2}
+  wallArray:
+  - {fileID: 1970562583199064, guid: 293147e7b44d04117ad428a36d803e4d, type: 2}
+  - {fileID: 1157007623199394, guid: a846ebc6be57941bf85f4ebe81dc67ff, type: 2}
+  - {fileID: 1482410634236306, guid: 2b6ef96985c764997af92026b541db0b, type: 2}
+  - {fileID: 1466779368271362, guid: f8a0cab6fcfab47c494addd187f16f49, type: 2}
+  - {fileID: 1539521510430114, guid: 107be154335bf493b9756883e1ef1444, type: 2}
+  - {fileID: 1785147205884092, guid: 609a0ef2f77c8495b91ec827c6ae6522, type: 2}
+  - {fileID: 1396173671519622, guid: acdd6a4457b5b4f3dbe49ed00ca344a0, type: 2}
+  - {fileID: 1448083373417886, guid: e0fe4abfe1f434ffd82eaba64e1913d8, type: 2}
+  foodArray:
+  - {fileID: 1757970751769166, guid: f428c3e56ef5048e18321c261ce25709, type: 2}
+  - {fileID: 1044050518156330, guid: 96dc64947c6ac43189bbf1522634dd3b, type: 2}
+  enemyArray:
+  - {fileID: 1558618844269146, guid: 64489d51bd78d4ce0a558d70ae068a76, type: 2}
+  - {fileID: 1558618844269146, guid: 64489d51bd78d4ce0a558d70ae068a76, type: 2}
+  exitPrefab: {fileID: 1281354229611064, guid: e18e317c2329247a3b9ed879c939cf56, type: 2}
   rows: 10
   cols: 10
+  minCountWall: 2
+  maxCountwall: 8
 --- !u!4 &510255583
 Transform:
   m_ObjectHideFlags: 0
@@ -168,6 +187,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &510255584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510255581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb9e7fa76a61e418ead088dc8853e808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +209,6 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -193,32 +223,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
---- !u!114 &519420030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee8c8e457d6d490cb3c41a695229c78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outWallay:
-  - {fileID: 1877427788687482, guid: 897bca52d4949462089ee7650944aab0, type: 2}
-  - {fileID: 1485323319527026, guid: 3bf75140894b543e0abf807458d3b755, type: 2}
-  - {fileID: 1082017163244982, guid: 6c8b4df41ef8b4417859d292f42f134a, type: 2}
-  floorArray:
-  - {fileID: 1818768998679334, guid: 3db9573d774634b6ead45b17c5a0db5a, type: 2}
-  - {fileID: 1469974811123918, guid: 7fd9b0b0090d644aebf6fae90ef6cfe1, type: 2}
-  - {fileID: 1185532309551106, guid: ae1065b7beff045eda0ed23f0d205e67, type: 2}
-  - {fileID: 1279592304352336, guid: 3eb89b8fc30364c1ebd8f1c4104661ba, type: 2}
-  - {fileID: 1101951132232182, guid: 065438b06ff1d4f35afa9af357995f1a, type: 2}
-  - {fileID: 1561694714797562, guid: 23a7a171351f64b4096192a57e91b456, type: 2}
-  - {fileID: 1163969556971836, guid: 6414f8369f49b4f3281371277848ed18, type: 2}
-  - {fileID: 1945252055848926, guid: 292552b84114b4d2ab061723cdd1a1e9, type: 2}
-  rows: 10
-  cols: 10
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -228,7 +232,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.044722315, g: 0.045674115, b: 0.047169805, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
