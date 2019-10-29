@@ -74,37 +74,28 @@ public GameObject[] outWallArray;
         //创建障碍物 食物 敌人 
         //创建障碍物
         int wallCount = Random.Range(minCountWall, maxCountwall+1);//障碍物个数
-        for (int i = 0; i < wallCount; i++){
-            //随机取得位置
-            Vector2 pos = Randomposition();
-            //随机取得障碍物
-            GameObject wallPrefab = RandomPrefab(wallArray);
-            GameObject go1 = GameObject.Instantiate(wallPrefab , pos, Quaternion.identity) as GameObject;
-            go1.transform.SetParent(mapHolder);
-        }
+        InstantiateItems(wallCount, wallArray);
         //创建食物2-level*2
         int foodCount = Random.Range(2, gameManager.level * 2 + 1);
-        for (int i = 0; i < foodCount; i++){
-            Vector2 pos = Randomposition();
-            GameObject foodPrefab = RandomPrefab(foodArray);
-            GameObject go2=Instantiate(foodPrefab, pos, Quaternion.identity)as GameObject ;
-            
-        }
+        InstantiateItems(foodCount, floorArray);
         //创建敌人//level/2
         int enemyCount = gameManager.level / 2;
-        for (int i = 0; i < enemyCount; i++){
-            Vector2 pos = Randomposition();
-            GameObject enemyPrefab = RandomPrefab(enemyArray );
-            GameObject go3 = Instantiate(enemyPrefab, pos, Quaternion.identity) as GameObject;
-            go3.transform.SetParent(mapHolder);
-        }
+        InstantiateItems(enemyCount, enemyArray);
+        
         //创建出口
         GameObject go4=Instantiate(exitPrefab, new Vector2(cols - 2, rows - 2), Quaternion.identity) as GameObject;
         go4.transform.SetParent(mapHolder);
     }
 
-
-
+ 
+    private void InstantiateItems(int count, GameObject[] prefabs){
+        for (int i = 0; i < count ; i++){
+            Vector2 pos = Randomposition();
+            GameObject enemyPrefab = RandomPrefab(enemyArray );
+            GameObject go = Instantiate(enemyPrefab, pos, Quaternion.identity) as GameObject;
+            go.transform.SetParent(mapHolder);
+        }
+    } 
     private Vector2 Randomposition(){
         int positionIndex = Random.Range(0, positionList.Count);
         Vector2 pos = positionList[positionIndex];
@@ -119,7 +110,7 @@ public GameObject[] outWallArray;
     }
     }
          
-          
+           
          
  
             

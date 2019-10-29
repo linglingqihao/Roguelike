@@ -8,14 +8,16 @@ public class player : MonoBehaviour
 	public float smoothing = 1;
 	public float restTime = 1;
 	public float resTimer = 0;
+	
 	private int posx = 1;
     private int posy = 1;
-	private Rigidbody2D rigidbody;
+	
 	private BoxCollider2D collider;
 	private Animator ainmator;
 	
 	
-	private Vector2 targetPos = new Vector2(1, 1);
+	private Vector2 targetPos  = new Vector2(1, 1);
+	private Rigidbody2D rigidbody;
 	// Use this for initialization
 	void Start ()
 	{
@@ -35,23 +37,18 @@ public class player : MonoBehaviour
 
 		float h = Input.GetAxisRaw("Horizontal");
 		float v = Input.GetAxisRaw("Vertical");
-		if (h > 0)
-		{
+		if (h > 0){
 			v = 0;
 		}
-
-		if (h != 0 || v != 0){
-			//检测
-			  
-			collider.enabled = false;
-		RaycastHit2D hit=	 Physics2D.Linecast(targetPos, targetPos + new Vector2(h, v));
-			collider.enabled = true;
+if (h != 0 || v != 0){
+	//检测
+	  collider.enabled = false;
+		RaycastHit2D hit=Physics2D.Linecast(targetPos, targetPos + new Vector2(h, v));
+	        collider.enabled = true;
 			if (hit.transform == null){
 				targetPos += new Vector2(h, v);
-
-			
-				
-			}
+				resTimer = 0;
+}
 			else{
 				switch (hit.collider.tag){
 					case"OutWall" :
@@ -59,7 +56,7 @@ public class player : MonoBehaviour
 					case"Wall":
 						ainmator.SetTrigger("Attack"); 
 						hit.collider.SendMessage("TakeDamage");
-						break;					
+						break;	
 				}
 			}	 
 			resTimer = 0;//攻击移动都需要休息
