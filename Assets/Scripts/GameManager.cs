@@ -5,16 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-	public int level = 1;//第一关
+    public int level = 1;//第一关
 	
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
-	}
+    }
 	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
 		
-	}
+    }
 }

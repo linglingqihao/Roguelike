@@ -4,10 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Food
-  - Soda
-  - wall
-  - outWall
+  - Background
+  - Iterms
+  - Role
   layers:
   - Default
   - TransparentFX
