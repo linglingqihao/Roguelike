@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+	private static GameManager _instance;
 
-    public int level = 1;//第一关
+	public static GameManager Instance
+	{
+		get { return _instance; }
+	}
+
+
+	public int level = 1;//第一关
+	public int food = 100;
 	
 
     // Use this for initialization
-    void Start () {
-		
+    void Awake ()
+    {
+	    _instance = this;
     }
-	
-    // Update is called once per frame
-    void Update () {
-		
-    }
+
+	public void ReduceFood(int count)
+	{
+		food -= count;
+	}
+
+	public void AddFood(int count)
+	{
+		food += count;
+	}
 }

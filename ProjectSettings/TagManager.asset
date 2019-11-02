@@ -7,6 +7,10 @@ TagManager:
   - Background
   - Iterms
   - Role
+  - OutWall
+  - Wall
+  - Food
+  - Soda
   layers:
   - Default
   - TransparentFX

@@ -69,8 +69,6 @@ public GameObject[] outWallArray;
                 positionList.Add(new Vector2(x, y));
           }
         } 
-        
-         
         //创建障碍物 食物 敌人 
         //创建障碍物
         int wallCount = Random.Range(minCountWall, maxCountwall+1);//障碍物个数
